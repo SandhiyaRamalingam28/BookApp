@@ -1,0 +1,42 @@
+<div class="container">
+    <h2>ADD BOOK</h2>
+    <form #Bookform = "ngForm" (ngSubmit)="saveBook()">
+      <div class="form-group">
+        <label for="email">Book Name:</label>
+        <input type="text" class="form-control" placeholder="Enter Book Name" name="bookName"[(ngModel)]="book.bookName" required  #bookName="ngModel"
+        [class.is-invalid]="bookName.invalid && bookName.touched"
+        > 
+      <div *ngIf="bookName.errors && (bookName.invalid && bookName.touched)">
+        <small class="text-danger" *ngIf="bookName.errors.required">Email Id is required field </small>
+      </div>
+      <br>
+      </div>
+      <div class="form-group">
+        <label for="name">Author Name</label>
+        <input type="text" class=" form-control" required [(ngModel)]="book.authorName" name="authorName" placeholder="Your Name" #authorName="ngModel"
+        [class.is-invalid]="authorName.invalid && authorName.touched" />
+        <small class="text-danger" [class.d-none]="authorName.valid||authorName.untouched"> Author Name is required field </small>
+    </div>
+    <br>
+      <div class="form-group">
+        <label for="text">Description:</label>
+        <input type="text-area" class="form-control" placeholder="Description" name="description"[(ngModel)]="book.description" required #description="ngModel"
+        [class.is-invalid]="description.invalid && description.touched"
+        >
+        <small class="text-danger"[class.d-none]="description.valid || description.untouched">Description is Required field </small>
+      </div>
+      <br>
+
+      <div class="form-group">
+        <label for="text">Image URL:</label>
+        <input type="text-area" class="form-control" placeholder="image" name="image"[(ngModel)]="book.image" required #image="ngModel"
+        [class.is-invalid]="image.invalid && image.touched"
+        >
+        <small class="text-danger"[class.d-none]="image.valid || image.untouched">image is Required field </small>
+      </div>
+      <br><br>
+      <button type="submit" class="btn btn-info">Submit </button><br>
+    </form>
+    
+  </div>
+

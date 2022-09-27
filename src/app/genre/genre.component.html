@@ -1,0 +1,39 @@
+<app-navbar> </app-navbar>
+<div class="container-fluid"><br><br>
+  <div class="search"></div>
+  <form (ngSubmit) = "searchSubmit()">
+      <div class="input-group">
+          <input type="search" class="form-control mr-sm-2" type="search" placeholder="Search" name="keyword" [(ngModel)] = "keyword">
+          <div class="input-group-btn">
+              <button class="btn btn-default" type="submit">
+                <i class="material-icons">search</i>
+              </button>
+          </div>
+      </div>
+      <small class="text-danger">{{msg}}</small>
+    </form>
+  </div>
+    <br><br>
+  <div class="row">
+      <div class="col-4 align-left" *ngFor="let book of bookList">
+          <div class="card shadow p-3 mb-5 bg-white rounded">
+              <div class="card-body">
+                  <h3 class="card-title">{{book.bookName}}</h3>
+                  <img src="{{book.image}}" class="img-responsive"  height="150px" width="200px" alt="Image">
+                  <!-- <p class="card-text">{{book.description}}</p>        -->
+                  <br><br>
+
+                  <div class="col-6" >
+                    <button class="btn btn-primary" (click)=" addToFav(book.id)" >Favorite</button>
+                </div>
+                  <!-- <div class="row">
+                      <div *ngIf=" book.inventoryDTO.quantity > 0 ; else elseBlock">
+                          
+                          
+                  </div>
+                  <ng-template #elseBlock><button type="button" class="btn btn-primary disabled">Stock Not Available</button></ng-template>
+                  </div> -->
+              </div>
+          </div>
+      </div>
+  </div>
